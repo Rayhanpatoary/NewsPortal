@@ -26,14 +26,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     private Context mContext ;
     private List<home_data_model> homeData ;
-    RequestOptions option;
+    private RequestOptions option;
 
     public HomeAdapter(Context mContext, List<home_data_model> homeData) {
         this.mContext = mContext;
         this.homeData = homeData;
         option = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
     }
-
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -130,6 +130,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             small_image = itemView.findViewById(R.id.small_news_image_id);
             video_symbol = itemView.findViewById(R.id.video_simble_id);
             small_news_headline = itemView.findViewById(R.id.small_news_headline_id);
+
+
 
 
         }

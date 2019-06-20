@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/overlay_dark_10"
+    android:id="@+id/container"
+    android:orientation="vertical">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/category_text_id"
+                android:text="Echo"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/big_news_id"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="250dp">
+
+                <ImageView
+                    android:id="@+id/big_news_image_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/image_11"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:id="@+id/news_big_headline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="150dp"
+                    android:background="@color/overlay_dark_10"
+                    android:maxLines="2"
+                    android:text="@string/short_lorem_ipsum"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@color/colorwhite"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <!--<LinearLayout
+                android:id="@+id/big_news_id"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/image_11"
+                android:gravity="bottom"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/news_big_headline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/overlay_dark_10"
+                    android:maxLines="2"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/short_lorem_ipsum"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@color/colorwhite"
+                    android:textStyle="bold" />
+
+            </LinearLayout> -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"> </View>
+
+            <LinearLayout
+                android:id="@+id/small_news_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+
+                    <ImageView
+                        android:id="@+id/small_news_image_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/image_11"
+                        android:scaleType="centerCrop"/>
+                    <ImageView
+                        android:id="@+id/video_simble_id"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_outline_play_circle_filled_24px"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/small_news_headline_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="4"
+                        android:layout_gravity="center"
+                        android:text="Quisque Lobortis Massa Quis Augue Venenatis"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/overlay_dark_90"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <!--
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"> </View>
+
+            <include layout="@layout/news_headline_single">
+
+            </include>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"> </View>
+
+            <include layout="@layout/news_headline_single">
+
+            </include>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"> </View>
+
+            <include layout="@layout/news_headline_single">
+
+            </include> -->
+
+
+        </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+
+
+

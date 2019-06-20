@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/overlay_dark_10"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:scrollingCache="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:text="@string/short_lorem_ipsum"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@color/overlay_dark_90"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Aliquam ac elit, vestibulum turpis."
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/overlay_dark_90" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_11"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:text="Image source : pexels.com"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/overlay_dark_90" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/very_long_lorem_ipsum"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/overlay_dark_90"
+                android:visibility="visible" />
+
+            <!--likes layout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3,556 Likes"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/overlay_dark_40" />
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:tint="@color/overlay_dark_40"
+                    app:srcCompat="@drawable/ic_more_vert"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/overlay_dark_20" />
+
+            <!--related article-->
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
+
+

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/appbar_id"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="?attr/actionBarSize">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                >
+
+            <TextView
+                android:id="@+id/action_title_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="News Portal"
+                android:textSize="20dp"/>
+
+
+            <Button
+                android:id="@+id/live_tv_in_action_id"
+                android:layout_marginLeft="70dp"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="10dp"
+                android:text="Tv Live"/>
+
+            </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/setting_button"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginEnd="75dp"
+                    app:srcCompat="@drawable/ic_settings_applications_black_24dp"
+                    tools:ignore="VectorDrawableCompat"
+                    android:layout_marginRight="75dp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/radio_player_id"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/overlay_dark_20">
+
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_play_circle_filled_24px" />
+
+        <TextView
+            android:id="@+id/title_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="72dp"
+            android:layout_toRightOf="@+id/play_button"
+            android:gravity="center"
+            android:text="Title will be here"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/radio_player_cancel_id"
+            android:layout_width="61dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_close_black_24dp" />
+
+    </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/navigation"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_gradient_soft" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@android:color/white"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/button_home"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/home_image"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/ic_home_black_24dp"
+
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/home_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="15dp"
+                        android:text="Home"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/button_news"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+                    <ImageView
+                        android:id="@+id/news_image"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/ic_news_black_24dp"
+
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/news_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="10dp"
+                        android:text="News 24/7"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/button_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/tv_image"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/ic_tv_black_24dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/tv_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="15dp"
+                        android:text="Tv"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/button_radio"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/radio_image"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/ic_radio_black_24dp"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/radio_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="15dp"
+                        android:text="Radio"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/button_menu"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/menu_image"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/ic_menu_black_24dp"
+
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/menu_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="15dp"
+                        android:text="Menu"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--<android.support.design.widget.BottomNavigationView-->
+        <!--android:id="@+id/navigation"-->
+        <!--app:labelVisibilityMode="selected"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--app:itemIconTint="@drawable/color_state_white_2"-->
+        <!--app:itemTextColor="@drawable/color_state_white_2"-->
+        <!--app:menu="@menu/menu_bottom_navigation_shifting" />-->
+    </LinearLayout>
+

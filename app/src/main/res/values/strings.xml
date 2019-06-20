@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">News Portal</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="very_long_lorem_ipsum">sdhfisfjosie oijhhdof uijofd ioijoijf iujodindf oijhokd oiuhd oijoijdo
+    ijuoijod oijoij jijd oijooi oioijoiid lioijoij oijijodif oijoi oijijho ihhjoiyuijoiuuh oiiiuoijhgoi uhgiuoi iuoioi
+    iuoiiuoiouoiy uyhiuujoi iuoi</string>
+    <string name="short_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="Home_url_link"> http://192.168.1.30/newsportal/api/get_home_content?api_secret_key=newsportalapikey </string>
+
+</resources>

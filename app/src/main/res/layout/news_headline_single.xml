@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/image_11"
+                android:scaleType="centerCrop"/>
+            <ImageView
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_outline_play_circle_filled_24px"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="Quisque Lobortis Massa Quis Augue Venenatis"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="@color/overlay_dark_90"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="02 Mar 2016"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/overlay_dark_90" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:maxLines="2"
+                android:text="Large Text "
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/overlay_dark_90" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

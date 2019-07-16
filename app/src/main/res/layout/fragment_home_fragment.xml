@@ -6,9 +6,15 @@
     android:id="@+id/fragment_home"
     android:orientation="vertical"
     android:layout_gravity="center"
-    tools:context=".home_fragment">
+    tools:context=".Home_fragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
@@ -18,6 +24,7 @@
         android:scrollbars="none"
         android:scrollingCache="true"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,8 +37,16 @@
                 android:scrollbars="vertical">
 
             </android.support.v7.widget.RecyclerView>
+            <include
+                android:id="@+id/failed_layout_id"
+                layout="@layout/layout_empty"
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
 
           </LinearLayout>
       </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
   </LinearLayout>

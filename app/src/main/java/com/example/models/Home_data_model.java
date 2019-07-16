@@ -1,9 +1,10 @@
 package com.example.models;
 
-import android.util.Log;
+public class Home_data_model {
 
-public class home_data_model {
+    private String news_id, news_category, Headline , description,type,thubnail_url,published_time;
 
+    private int index_in_array;
 
     public String getNews_category() {
         return news_category;
@@ -12,9 +13,6 @@ public class home_data_model {
     public void setNews_category(String news_category) {
         this.news_category = news_category;
     }
-
-    public String news_category, Headline , description,type,thubnail_url;
-    int index_in_array;
 
     public int getIndex_in_array() {
         return index_in_array;
@@ -58,14 +56,32 @@ public class home_data_model {
         this.thubnail_url = thubnail_url;
     }
 
-    public home_data_model(String headline, String description, String type, String thubnail_url) {
-        Headline = headline;
+    public String getNews_id() { return news_id; }
+
+    public void setNews_id(String news_id) {
+        this.news_id = news_id;
+    }
+
+    public String getPublished_time() {
+        return published_time;
+    }
+
+    public void setPublished_time(String published_time) {
+        this.published_time = published_time;
+    }
+
+    public Home_data_model(String id, String headline, String description, String type, String thubnail_url) {
+
+        this.news_id = id;
+        this.Headline = headline;
         this.description = description;
         this.type = type;
         this.thubnail_url = thubnail_url;
     }
 
-    public home_data_model() {
+    public Home_data_model() {
 
     }
+
+
 }

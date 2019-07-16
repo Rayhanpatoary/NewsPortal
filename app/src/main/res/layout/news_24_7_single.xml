@@ -3,54 +3,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:id="@+id/news24_container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/small_news_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/small_news_image_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/image_11"
+                    android:scaleType="centerCrop"/>
+                <ImageView
+                    android:id="@+id/video_simble_id"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_outline_play_circle_filled_24px"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/small_news_headline_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:layout_gravity="center"
+                    android:text="Quisque Lobortis Massa Quis Augue Venenatis"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/overlay_dark_90"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/small_news_details_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:text="details 3 lines"/>
 
 
+            </LinearLayout>
+        </LinearLayout>
 
 
-
-        <include layout="@layout/news_headline_single">
-
-        </include>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="30dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:text="Politics"
-                android:gravity="center"
-                app:srcCompat="@drawable/ic_favorites"
-                tools:ignore="VectorDrawableCompat" />
-
-
-
+                android:id="@+id/published_time_field_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="12:01/07.6.2019"
+                android:textColor="@color/overlay_dark_40"
+                android:layout_marginTop="2dp"
+                android:textSize="10dp"
+                />
             <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                />
 
             <ImageButton
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/share_news_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:tint="@color/overlay_dark_40"
                 app:srcCompat="@drawable/ic_share"
                 tools:ignore="VectorDrawableCompat" />
 
 
-
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/overlay_dark_10">
+        </View>
+
     </LinearLayout>
 
 

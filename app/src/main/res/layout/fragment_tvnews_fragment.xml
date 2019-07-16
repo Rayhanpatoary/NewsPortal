@@ -3,23 +3,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:keepScreenOn="true"
     tools:context=".tvnews_fragment">
 
     <!-- TODO: Update blank fragment layout -->
-
     <LinearLayout
+        android:id="@+id/fragment_part_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/video_player">
+    <RelativeLayout
+        android:id="@+id/play"
+        android:background="@color/overlay_dark_90"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:focusable="true"
+        >
 
-        </include>
+        <FrameLayout
+            android:id="@+id/player_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <include layout="@layout/tv_news_single">
-        </include>
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exo_player_view">
+            </com.google.android.exoplayer2.ui.SimpleExoPlayerView>
+
+        </FrameLayout>
+
+        <WebView
+            android:id="@+id/webView"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/img_full_scr"
+            android:src="@drawable/ic_fullscreen"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="22dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            tools:ignore="VectorDrawableCompat"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" />
+
+        <ProgressBar
+            android:id="@+id/tv_progressBar"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:src="@drawable/ic_outline_play_circle_filled_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:paddingTop="3dp"
+            android:id="@+id/playing_video_title_id"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/colorwhite"
+            android:background="@color/switch_color_primary"
+            android:text="Title text"
+            android:textStyle="bold"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+   <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_wise_recycler_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
-</LinearLayout>
+
+   </LinearLayout>
+
+    </ScrollView>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/failed_layout_id"
+        layout="@layout/layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"/>
+
+ </LinearLayout>

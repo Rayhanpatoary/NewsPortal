@@ -2,41 +2,81 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".radio_fragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-
-
-
-
     <LinearLayout
-        android:layout_weight="1"
+        android:id="@+id/fragment_part_id"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="500dp">
-
+        android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/live_button_field_id"
             android:layout_width="match_parent"
-            android:background="@drawable/radio_image"
-            android:layout_height="140dp">
-            <Button
-                android:id="@+id/live_radio_button_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Live Radio"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <RelativeLayout
+                android:id="@+id/live_radio_button_id"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <ImageView
+                    android:id="@+id/live_radio_clip_image_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/radio_image"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/video_simble_id"
+                    android:layout_centerInParent="true"
+                    android:visibility="visible"
+                    android:src="@drawable/ic_outline_play_circle_filled_24px"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/txt_radio_title_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text=" Live Radio Streaming"
+                    android:textColor="@color/overlay_dark_90"
+                    android:textSize="22sp" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/audio_clip_recycler_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            >
 
-
-
-        <include layout="@layout/radio_clip_single"/>
-
+        </android.support.v7.widget.RecyclerView>
+        <include
+            android:id="@+id/faild_lyt_id"
+            layout="@layout/layout_empty"
+            android:visibility="gone"/>
 
 
 
@@ -45,6 +85,12 @@
 
     </LinearLayout>
 
+    <include
+        android:id="@+id/failed_layout_id"
+        layout="@layout/layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 
 

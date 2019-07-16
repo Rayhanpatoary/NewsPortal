@@ -1,22 +1,31 @@
 package com.example.newsportal;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toolbar;
+
+import com.example.utils.Config;
+import com.example.utils.NetworkInst;
+
+import java.io.IOException;
 
 import static com.example.newsportal.R.color.colorPrimary;
 import static com.example.newsportal.R.color.normal_tint;
@@ -29,28 +38,42 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout menu_button;
     private RelativeLayout radio_player;
 
+    private ImageView live_radio_play_symble;
     private ImageView home_image;
     private ImageView news_image;
     private ImageView tv_image;
     private ImageView radio_image;
     private ImageView menu_image;
-
+    private static ImageButton button_play;
     private TextView home_text;
 
     private TextView news_text;
     private TextView tv_text;
     private TextView radio_text;
     private TextView menu_text;
+    private TextView clip_name_field;
+    private TextView playing_audio_title;
 
    // private Toolbar toolbar;
     private Button toolbar_tv;
-    private TextView title_text;
+    private TextView title_text,clip_time_duration;
     private ImageButton setting_button;
     private ImageButton radio_cancel_button;
+    private static MediaPlayer mediaPlayer;
+    private LinearLayout radio_layout;
+    private FrameLayout fragment_container_field;
+    private ProgressBar delay_progress_field;
+    //private static String stream = " ";
+   // private static String stream = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3";
 
 
-    @SuppressLint("ResourceAsColor")
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
+    private static boolean prepared=false,started = false;
+
+    ProgressBar progressBar;
+
+    @SuppressLint({"ResourceAsColor", "WrongViewCast", "NewApi"})
+    //@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,14 +98,27 @@ public class MainActivity extends AppCompatActivity {
         setting_button = findViewById(R.id.setting_button);
         radio_player = findViewById(R.id.radio_player_id);
         radio_cancel_button = findViewById(R.id.radio_player_cancel_id);
+        button_play = findViewById(R.id.img_player_play);
+        fragment_container_field = findViewById(R.id.fragment_container);
+        delay_progress_field = findViewById(R.id.delay_progressbar_id);
 
+        button_play.setEnabled(false);
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        //media_initial(stream);
 
-        //setActionBar(toolbar);
+        progressBar = findViewById(R.id.progress_bar_collapse);
+
+        clip_time_duration = findViewById(R.id.txt_playing_audio_duration);
+
+        clip_name_field = findViewById(R.id.txt_playing_audio_name);
 
         load_home_fragment();
-
-        //getActionBar().setTitle("News Portal App1");
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(getResources().getColor(colorPrimary, this.getTheme()));
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(colorPrimary));
+        }
 
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +162,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setting_button.setOnClickListener(new View.OnClickListener() {
+        setting_button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 open_setting_activity();
@@ -136,51 +173,162 @@ public class MainActivity extends AppCompatActivity {
         radio_cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 radio_player.setVisibility(View.GONE);
+                mediaPlayer.stop();
 
             }
         });
 
+        button_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (started){
+                    started=false;
+                    mediaPlayer.pause();
+                    button_play.setImageResource(R.drawable.ic_play_arrow_white);
+                }
+                else {
+
+                    started=true;
+                    mediaPlayer.start();
+                    button_play.setImageResource(R.drawable.ic_pause_black_24dp);
+                }
+            }
+        });
+
+    }
+
+    private void delay_for_set(){
+        fragment_container_field.setVisibility(View.GONE);
+        delay_progress_field.setVisibility(View.VISIBLE);
+        new CountDownTimer(Config.DELAY_DURATION, 1000) {
+
+            @Override
+            public void onFinish() {
+
+                delay_progress_field.setVisibility(View.GONE);
+                fragment_container_field.setVisibility(View.VISIBLE);
+
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+        }.start();
+
+    }
+
+
+    public void change_playing(String strm, final String title, final String duration) {
+        radio_player.setVisibility(View.VISIBLE);
+
+        if (prepared) {
+            mediaPlayer.stop();
+            started=false;
+            button_play.setImageResource(R.drawable.ic_play_arrow_white);
+        }
+
+
+        String stream2 = strm;
+        //"http://stream.zenolive.com/8wv4d8g4344tv";
+        media_initial(stream2);
+
+        clip_name_field.setText("Loading ...");
+
+        clip_time_duration.setText("Loading ...");
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        new CountDownTimer(Config.SPLASH_DURATION, 1000) {
+
+            @Override
+            public void onFinish() {
+                clip_name_field.setText(title);
+
+                clip_time_duration.setText(duration);
+
+                progressBar.setVisibility(View.GONE);
+
+                    started=true;
+                   // mediaPlayer.start();
+                    button_play.setImageResource(R.drawable.ic_pause_black_24dp);
+
+
+
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+        }.start();
+
+    }
+
+    public void media_initial(String stream)
+    {
+        new PlayerTask().execute(stream);
+
+        Log.e("The Radio is :", stream);
 
     }
 
    void open_setting_activity(){
-       Intent i = new Intent(this,setting_activity.class);
+
+       Intent i = new Intent(this, setting_activity.class);
        startActivity(i);
+
    }
 
    void load_home_fragment(){
+
         title_text.setText("News Portal App");
         make_all_button_normal_color();
         home_text.setTextColor(this.getResources().getColor(colorPrimary));
         toolbar_tv.setVisibility(View.VISIBLE);
         home_image.setColorFilter(ContextCompat.getColor(getBaseContext(), colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
-        loadFragment(new home_fragment());
+        loadFragment(new Home_fragment());
+        delay_for_set();
+
 
     }
+
     void load_news_fragment(){
+
         make_all_button_normal_color();
         title_text.setText("News 24/7");
         news_text.setTextColor(this.getResources().getColor(colorPrimary));
         news_image.setColorFilter(ContextCompat.getColor(getBaseContext(), colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
         loadFragment(new news_fragment());
+        delay_for_set();
+
     }
 
     void load_tv_fragment(){
+
         make_all_button_normal_color();
         title_text.setText("Live Tv");
         tv_text.setTextColor(this.getResources().getColor(colorPrimary));
         tv_image.setColorFilter(ContextCompat.getColor(getBaseContext(), colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
         loadFragment(new tvnews_fragment());
+        delay_for_set();
+
     }
+
     void load_radio_fragment(){
-        radio_player.setVisibility(View.VISIBLE);
+        if (new NetworkInst(this).isNetworkAvailable()){
+            radio_player.setVisibility(View.VISIBLE);
+        }
+
         make_all_button_normal_color();
         title_text.setText("Radio");
         radio_text.setTextColor(this.getResources().getColor(colorPrimary));
         radio_image.setColorFilter(ContextCompat.getColor(getBaseContext(), colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
         loadFragment(new radio_fragment());
-    }
+        delay_for_set();
+        }
 
     void load_menu_fragment(){
         make_all_button_normal_color();
@@ -188,8 +336,9 @@ public class MainActivity extends AppCompatActivity {
         setting_button.setVisibility(View.VISIBLE);
         menu_text.setTextColor(this.getResources().getColor(colorPrimary));
         menu_image.setColorFilter(ContextCompat.getColor(getBaseContext(), colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
-        loadFragment(new menu_fragment());
-    }
+        loadFragment(new Menu_fragment());
+        delay_for_set();
+        }
 
     void make_all_button_normal_color(){
         toolbar_tv.setVisibility(View.GONE);
@@ -206,7 +355,8 @@ public class MainActivity extends AppCompatActivity {
         radio_image.setColorFilter(ContextCompat.getColor(getBaseContext(), R.color.normal_tint), android.graphics.PorterDuff.Mode.SRC_IN);
         menu_image.setColorFilter(ContextCompat.getColor(getBaseContext(), R.color.normal_tint), android.graphics.PorterDuff.Mode.SRC_IN);
 
-    }
+        }
+
 
     private boolean loadFragment(Fragment fragment){
 
@@ -220,6 +370,67 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
 
+    private class PlayerTask extends AsyncTask<String,Void,Boolean> {
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+
+            try {
+                mediaPlayer.reset();
+                mediaPlayer.setDataSource(strings[0]);
+                mediaPlayer.prepare();
+                //mediaPlayer.prepareAsync();
+                prepared = true;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+            catch (IllegalArgumentException e) {
+
+            }
+            catch (IllegalStateException e) {
+
+            }
+            return prepared;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            mediaPlayer.start();
+            button_play.setEnabled(true);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+
+        if(started){
+            mediaPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        if (started){
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+
+        if (prepared){
+            mediaPlayer.release();
+
+        }
     }
 }

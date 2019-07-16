@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#1E88E5</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-
+    <color name="colorred">#DF655C</color>
     <color name="colorwhite">#FFFFFF</color>
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>
@@ -13,5 +13,8 @@
     <color name="overlay_dark_90">#E6000000</color>
     <color name="normal_tint">#535353</color>
     <color name="switch_color_primary">#1E88E5</color>
+    <color name="progressBarColor">#1E88E5</color>
+    <color name="blue">#9D9DEB</color>
+    <color name="red">#FF0000</color>
 
 </resources>

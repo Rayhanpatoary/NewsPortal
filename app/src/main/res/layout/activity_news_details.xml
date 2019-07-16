@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".News_details"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/data_part_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:id="@+id/video_player_field_id"
+        android:background="@color/overlay_dark_90"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:visibility="gone"
+        android:focusable="true">
+
+        <FrameLayout
+            android:id="@+id/player_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exo_player_view">
+            </com.google.android.exoplayer2.ui.SimpleExoPlayerView>
+
+        </FrameLayout>
+
+        <WebView
+            android:id="@+id/webView"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/img_full_scr"
+            android:src="@drawable/ic_fullscreen"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="22dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            tools:ignore="VectorDrawableCompat"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" />
+
+        <ProgressBar
+            android:id="@+id/tv_progressBar"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:src="@drawable/ic_outline_play_circle_filled_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="645dp"
+        android:background="@android:color/white"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:scrollingCache="true"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/news_headline_field_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:text="@string/short_lorem_ipsum"
+                    android:textSize="25dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@color/overlay_dark_90"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/published_time_id"
+                    android:textSize="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Published time:"
+                    android:textColor="@color/overlay_dark_90" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/text_news_image_field_id"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_11"
+                android:layout_margin="5dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/news_details_field_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/very_long_lorem_ipsum"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/overlay_dark_90"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/video_news_image_field_id"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_11"
+                android:visibility="gone" />
+
+
+            <!--likes layout-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+
+                <ImageButton
+                    android:id="@+id/share_icon_id"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:tint="@color/overlay_dark_40"
+                    app:srcCompat="@drawable/ic_share"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/overlay_dark_20" />
+
+            <!--related article-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:text="Related News"
+                android:textSize="20sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/overlay_dark_90"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/related_news_recycler_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+    </LinearLayout>
+    <include
+        android:id="@+id/failed_layout_id"
+        layout="@layout/layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+</LinearLayout>

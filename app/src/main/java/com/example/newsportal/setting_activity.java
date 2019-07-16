@@ -2,14 +2,14 @@ package com.example.newsportal;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
+
+import static com.example.newsportal.R.color.colorPrimary;
 
 public class setting_activity extends AppCompatActivity {
 
@@ -29,6 +29,12 @@ public class setting_activity extends AppCompatActivity {
 
         share_button = (LinearLayout) findViewById(R.id.share_app_button_id);
         back_image = (ImageView) findViewById(R.id.img_back);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(getResources().getColor(colorPrimary, this.getTheme()));
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(colorPrimary));
+        }
 
         share_button.setOnClickListener(new View.OnClickListener() {
             @Override

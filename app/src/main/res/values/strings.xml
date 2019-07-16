@@ -9,4 +9,12 @@
     <string name="short_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="Home_url_link"> http://192.168.1.30/newsportal/api/get_home_content?api_secret_key=newsportalapikey </string>
 
+
+    <!--API -->
+    <!-- copy your api url from php admin dashboard & paste bellow string tag -->
+    <string name="api_url">http://redtvlive.com/news/api/</string>
+    <!-- copy your api key from php admin dashboard & paste bellow string tag -->
+    <string name="api_key">newsportalapikey</string>
+
+
 </resources>

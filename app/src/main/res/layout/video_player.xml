@@ -7,10 +7,10 @@
 
     <RelativeLayout
         android:id="@+id/play"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/overlay_dark_90"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="210dp"
         android:focusable="true">
 
         <FrameLayout
@@ -18,10 +18,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.exoplayer2.ui.PlayerView
-                android:id="@+id/video_view"
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/exo_player_view">
+            </com.google.android.exoplayer2.ui.SimpleExoPlayerView>
 
         </FrameLayout>
 
@@ -33,7 +34,7 @@
 
         <ImageView
             android:id="@+id/img_full_scr"
-            app:srcCompat="@drawable/ic_fullscreen"
+            android:src="@drawable/ic_fullscreen"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="22dp"
             android:layout_alignParentEnd="true"
@@ -44,30 +45,13 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp" />
 
-
-
-
-
-        <ImageView
-            android:foregroundGravity="center"
-            android:src="@drawable/ic_outline_play_circle_filled_24px"
-            android:layout_width="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_height="wrap_content" />
-
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/tv_progressBar"
             android:layout_centerInParent="true"
-            android:visibility="visible"
+            android:visibility="gone"
             android:src="@drawable/ic_outline_play_circle_filled_24px"
             android:layout_width="50dp"
             android:layout_height="50dp" />
-
-
-
-
-
-
     </RelativeLayout>
 
 

@@ -13,30 +13,32 @@
         android:background="@android:color/white"
         android:orientation="vertical"
         >
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/appbar_id"
             android:layout_width="match_parent"
-            android:background="@color/colorPrimary"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
             <ImageView
                 android:id="@+id/img_back"
-                android:paddingTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:layout_alignParentTop="true"
-                app:srcCompat="@drawable/ic_action_back_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:paddingStart="0dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                app:srcCompat="@drawable/ic_action_back_arrow"
                 tools:ignore="VectorDrawableCompat" />
+
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:paddingLeft="20dp"
+                android:layout_height="match_parent"
+                android:layout_margin="11dp"
+                android:paddingLeft="10dp"
                 android:text="Settings"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-                android:textColor="@android:color/black"
-                 />
+                android:textColor="@color/colorwhite" />
 
 
         </android.support.v7.widget.Toolbar>

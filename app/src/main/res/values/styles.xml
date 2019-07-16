@@ -9,4 +9,25 @@
 
     </style>
 
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/progressBarColor</item>
+    </style>
+
+    <style name="ExoMediaButton.Previous">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="ExoMediaButton.Next">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="ExoMediaButton.FastForward">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="ExoMediaButton.Rewind">
+        <item name="android:visibility">gone</item>
+    </style>
+
+
 </resources>

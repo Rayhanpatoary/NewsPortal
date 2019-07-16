@@ -6,50 +6,65 @@
     android:orientation="vertical"
     tools:context=".news_fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/nested_scroll_view"
+
+    <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:clipToPadding="false"
-        android:scrollbars="none"
-        android:scrollingCache="true"
-        >
-        <LinearLayout
+        android:layout_height="match_parent">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/news_refresher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <include layout="@layout/news_24_7_single" >
-
-            </include>
-            <include layout="@layout/news_24_7_single" >
-
-            </include>
-            <include layout="@layout/news_24_7_single" >
-
-            </include>
-
-            <include layout="@layout/news_24_7_single" >
-
-            </include>
-
-            <include layout="@layout/news_24_7_single" >
-
-            </include>
-
-            <include layout="@layout/news_24_7_single" >
-
-            </include>
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
-        </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/news24_recycler_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:scrollingCache="true">
 
-    </android.support.v4.widget.NestedScrollView>
+                </android.support.v7.widget.RecyclerView>
+
+        </android.support.v4.widget.NestedScrollView>
 
 
+        <include
+            android:id="@+id/failed_layout_id"
+            layout="@layout/layout_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+        </RelativeLayout>
 
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+        <ProgressBar
+            android:id="@+id/item_progress_bar"
+            android:layout_width="426dp"
+            android:layout_height="61dp"
+            android:layout_alignParentBottom="true"
+            android:elevation="5dp"
+            android:padding="5dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 
 
 

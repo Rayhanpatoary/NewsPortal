@@ -2,41 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/category_wise_container">
 
+    <TextView
+        android:id="@+id/category_title_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category title 02"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+    />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/category_recycler_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
-
-    <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="130dp"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-
-
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="90dp"
-        android:background="@drawable/image_11"
-        >
-
-        <TextView
-            android:text="00:00"
-            android:background="@color/overlay_dark_20"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-    </RelativeLayout>
-
-        <TextView
-            android:text="This is the Headline"
-            android:textSize="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
-
-    </LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

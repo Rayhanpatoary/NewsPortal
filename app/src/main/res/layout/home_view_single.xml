@@ -6,9 +6,10 @@
     android:layout_height="wrap_content"
     android:background="@color/overlay_dark_10"
     android:id="@+id/container"
-    android:orientation="vertical">
-
-
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
 
         <LinearLayout
@@ -19,16 +20,18 @@
                 android:id="@+id/category_text_id"
                 android:text="Echo"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="16dp"
+                android:layout_marginLeft="10dp"
                 android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:clickable="false"/>
 
             <RelativeLayout
                 android:id="@+id/big_news_id"
                 android:layout_width="match_parent"
                 android:visibility="gone"
-                android:layout_height="250dp">
+                android:layout_height="220dp">
 
                 <ImageView
                     android:id="@+id/big_news_image_id"
@@ -45,6 +48,7 @@
                     android:layout_marginTop="150dp"
                     android:background="@color/overlay_dark_10"
                     android:maxLines="2"
+                    android:textSize="20dp"
                     android:text="@string/short_lorem_ipsum"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="@color/colorwhite"
@@ -80,16 +84,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"> </View>
 
+
+
             <LinearLayout
                 android:id="@+id/small_news_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_margin="10dp">
 
                 <RelativeLayout
                     android:layout_width="100dp"
-                    android:layout_height="100dp">
+                    android:layout_height="80dp">
 
                     <ImageView
                         android:id="@+id/small_news_image_id"
@@ -128,11 +134,18 @@
                         android:text="Quisque Lobortis Massa Quis Augue Venenatis"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         android:textColor="@color/overlay_dark_90"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/overlay_dark_10"> </View>
+
             <!--
             <View
                 android:layout_width="match_parent"
@@ -155,7 +168,6 @@
             <include layout="@layout/news_headline_single">
 
             </include> -->
-
 
         </LinearLayout>
 
